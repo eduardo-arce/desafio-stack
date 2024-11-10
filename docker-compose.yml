@@ -1,0 +1,53 @@
+version: "3.8"
+
+networks:
+  desafio-network:
+    driver: bridge
+
+services:
+  # Banco de Dados (PostgreSQL)
+  desafio-db:
+    image: postgres:13
+    restart: always
+    ports:
+      - "5432:5432"             # Mapeia a porta 5432 da máquina para a porta 5432 do container
+    networks:
+      - desafio-network
+    environment:
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_NAME}
+    volumes:
+      - desafio-db-data:/var/lib/postgresql/data  # Volume persistente para o PostgreSQL
+  
+  # Serviço do Backend (API)
+  desafio-api:
+    build:
+      context: ../desafio-api   # Caminho relativo para o código do backend
+      dockerfile: Dockerfile     # Nome do Dockerfile, caso seja diferente ajuste aqui
+    restart: always
+    ports:
+      - "8000:80"               # Mapeia a porta 8000 da máquina para a porta 80 do container
+    networks:
+      - desafio-network
+    environment:
+      DB_CONNECTION_STRING: ${DB_CONNECTION_STRING}
+      ASPNETCORE_ENVIRONMENT: ${ASPNETCORE_ENVIRONMENT}
+    depends_on:
+      - desafio-db
+ 
+  # Serviço do Frontend (Web)
+  desafio-web:
+    build:
+      context: ../desafio-web   # Caminho relativo para o código do frontend
+    restart: always
+    ports:
+      - "4000:80"               # Mapeia a porta 4000 da máquina para a porta 80 do container
+    networks:
+      - desafio-network
+    depends_on:
+      - desafio-api
+
+volumes:
+  desafio-db-data:
+    external: false  # O volume será criado automaticamente
