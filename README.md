@@ -1,10 +1,6 @@
-# Stencil Stack
+# Desafio Stack
 
-Esse projeto reune todos os serviços necessários para o funcionamento do Stencil.
-
-Pode ser utilizado para deploy em um servidor.
-
-Esta aplicação requer no minimo um processador de 2.5 ghz, 8GB de ram e 100gb de disco.
+Esse projeto reune todos os serviços necessários para o funcionamento do Desafio.
 
 ## Dependências
 
@@ -12,50 +8,41 @@ Esta aplicação requer no minimo um processador de 2.5 ghz, 8GB de ram e 100gb 
 * docker-compose
 * git bash
 
-## Suba o ambiente local
-
-Passe o ambiente desejado como paramêtro:
+## Suba o ambiente
 
 ```sh
-./start.sh local
+./start.sh
 ```
 
 ## Acesse
 
 Espere o ambiente subir e acesse:
-[http://localhost:4000/](http://localhost:4000/)
+
+Web: [http://localhost:4000](http://localhost:4000)
+
+Api: [http://localhost:8000/swagger](http://localhost:8000/swagger)
 
 ### Exclua tudo
 
 Atenção: o procedimento abaixo removerá as imagens, volumes e containers.
 
 ```sh
-./clean-all.sh local
+./clean-all.sh
 ```
 
-## For tester
-
-Para subir o ambiente completo, basta executar o comando abaixo:
-
-* Git Bash
+### Acompanhe os logs
 
 ```sh
-./start.sh qa
+./logs.sh
 ```
 
-## Usando o ambiente de produção
-
-```sh
-./start.sh prod
-```
-
-## Credenciais do Stencil DB
+## Credenciais do Desafio DB
 
 ```
-Driver: oracle
+Driver: PostgreSQL
 Host: localhost
-Username: stencil
-Password: stencilpassword
-Database: XE
-Porta: 1521
+Username: desafioindtuser
+Password: desafioindtpassword
+Database: desafioindt
+Porta: 5432
 ```
