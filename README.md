@@ -39,6 +39,12 @@ Web: [http://localhost:4000](http://localhost:4000)
 
 Api: [http://localhost:8000/swagger](http://localhost:8000/swagger)
 
+## Login na Aplicação
+
+Usuário: admin
+
+Senha: admin
+
 ### Exclua tudo
 
 Atenção: o procedimento abaixo removerá as imagens, volumes e containers.
