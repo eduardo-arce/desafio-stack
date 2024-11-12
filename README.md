@@ -8,11 +8,28 @@ Esse projeto reune todos os serviços necessários para o funcionamento do Desaf
 * docker-compose
 * git bash
 
+## Organização dos diretórios Stack, Api e Web
+
+Desafio/
+
+├── desafio-api/
+
+├── desafio-db/
+
+├── desafio-web/
+
+Salvar os diretórios do projeto nesse formato, 
+para o bom funcionamento do docker compose no desafio-stack.
+
 ## Suba o ambiente
 
 ```sh
 ./start.sh
 ```
+
+## Gerar Tabelas na Banco
+
+Veja isso em: [https://github.com/eduardo-arce/desafio-api](https://github.com/eduardo-arce/desafio-api)
 
 ## Acesse
 
